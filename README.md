@@ -1,2 +1,0 @@
-# ESFDS
-Elektroniczny system FDS
