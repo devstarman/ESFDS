@@ -27,23 +27,23 @@ MyLoginPage.js - widok panelu logowania
 Dashboard.js - widok panelu gÅ‚Ã³wnego
 
 
-"back" - zawiera serwer aplikacji napisany przy u¿yciu Node.JS
-Projekt zawiera nastêpuj¹ce endpointy:
-users.handleGetUsers(req,res,db) - zwraca listê u¿ytkowników
-wnioski.handleGetWnioski(req,res,db) - zwraca listê z³o¿onych wniosków
+"back" - zawiera serwer aplikacji napisany przy uÅ¼yciu Node.JS
+Projekt zawiera nastÄ™pujÄ…ce endpointy:
+users.handleGetUsers(req,res,db) - zwraca listÄ™ uÅ¼ytkownikÃ³w
+wnioski.handleGetWnioski(req,res,db) - zwraca listÄ™ zÅ‚oÅ¼onych wnioskÃ³w
 wnioski.handleShowEditApplication(req,res,db) - zwraca wniosek o zadanym id
-wnioski.handlePostWnioski(req, res, db) - dodaje nowy wniosek do bazy danych na podstawie parametrów w req.body: userId, title, body
+wnioski.handlePostWnioski(req, res, db) - dodaje nowy wniosek do bazy danych na podstawie parametrÃ³w w req.body: userId, title, body
 wnioski.handleUpdateApplication(req,res,db) - uaktualnia wniosek o zadanym id
-authentication.handleAuthentication(req,res,db,bcrypt) - sprawdza czy u¿ytkownik poda³ w³aœciwe dane do logowania
+authentication.handleAuthentication(req,res,db,bcrypt) - sprawdza czy uÅ¼ytkownik podaÅ‚ wÅ‚aÅ›ciwe dane do logowania
 
-"test-admin" - zawiera aplikacjê napisan¹ przy u¿yciu React.JS oraz react-admin
+"test-admin" - zawiera aplikacjÄ™ napisanÄ… przy uÅ¼yciu React.JS oraz react-admin
 Projekt zawiera:
-compononents - folder z komponentami u¿ytymi w tworzeniu widoków
-App.js - g³ówny widok aplikacji, renderuje komponent <Admin> oraz komponenty pochodne <Resource> z list¹ u¿ytkowników i list¹ wniosków
-authProvider.js - klasa odpowiadaj¹ca za autentykacjê u¿ytkowników podczas ró¿nych czynnoœci (logowanie, prze³¹czanie miêdzy stronami, wylogowanie, zapytania do serwera)
-dataProvider.js - klasa odpowiadaj¹ca za komunikacjê z serwerem
+compononents - folder z komponentami uÅ¼ytymi w tworzeniu widokÃ³w
+App.js - gÅ‚Ã³wny widok aplikacji, renderuje komponent <Admin> oraz komponenty pochodne <Resource> z listÄ… uÅ¼ytkownikÃ³w i listÄ… wnioskÃ³w
+authProvider.js - klasa odpowiadajÄ…ca za autentykacjÄ™ uÅ¼ytkownikÃ³w podczas rÃ³Å¼nych czynnoÅ›ci (logowanie, przeÅ‚Ä…czanie miÄ™dzy stronami, wylogowanie, zapytania do serwera)
+dataProvider.js - klasa odpowiadajÄ…ca za komunikacjÄ™ z serwerem
 MyLoginPage.js - widok panelu logowania
-Dashboard.js - widok panelu g³ównego
+Dashboard.js - widok panelu gÅ‚Ã³wnego
 
 
 Baza danych:
