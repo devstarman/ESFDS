@@ -1,15 +1,34 @@
-To jest projekt Elektronicznego Systemu Finansowania Dzia�alno�ci Studenckiej.
+To jest projekt Elektronicznego Systemu Finansowania Działalności Studenckiej.
 
 Instalacja:
-1. Prosz� pobra� repozytorium do lokalnego folderu.
-2. Prosz� wykona� instrukcj� npm install.
-3. Prosz� zainstalowa� na lokalnym komputerze baz� postgresql i utworzy� tabele zgodnie z instrukcjami poni�ej.
-4. Prosz� zaktualizowa� dane dost�powe do bazy postgresql w pliku back/server.js (zmienna db, kt�ra nawi�zuje po��czenie za pomoc� knex).
-5. Prosz� uruchomi� server (w folderze back polecenie npm start).
-6. Prosz� uruchomi� aplikacj� (w folderze front polecenie npm start). Aplikacja jest domy�lnie ustawiona do uruchomienia na porcie 3001, w przypadku konflikt�w nale�y zmieni� ustawienia w pliku front/package.json
+1. Proszę pobrać repozytorium do lokalnego folderu.
+2. Proszę wykonać instrukcję npm install.
+3. Proszę zainstalować na lokalnym komputerze bazę postgresql i utworzyć tabele zgodnie z instrukcjami poniżej.
+4. Proszę zaktualizować dane dostępowe do bazy postgresql w pliku back/server.js (zmienna db, która nawiązuje połączenie za pomocą knex).
+5. Proszę uruchomić server (w folderze back polecenie npm start).
+6. Proszę uruchomić aplikację (w folderze front polecenie npm start). Aplikacja jest domyślnie ustawiona do uruchomienia na porcie 3001, w przypadku konfliktów należy zmienić ustawienia w pliku front/package.json
+
+"back" - zawiera serwer aplikacji napisany przy użyciu Node.JS
+Projekt zawiera następujące endpointy:
+users.handleGetUsers(req,res,db) - zwraca listę użytkowników
+wnioski.handleGetWnioski(req,res,db) - zwraca listę złożonych wniosków
+wnioski.handleShowEditApplication(req,res,db) - zwraca wniosek o zadanym id
+wnioski.handlePostWnioski(req, res, db) - dodaje nowy wniosek do bazy danych na podstawie parametrów w req.body: userId, title, body
+wnioski.handleUpdateApplication(req,res,db) - uaktualnia wniosek o zadanym id
+authentication.handleAuthentication(req,res,db,bcrypt) - sprawdza czy użytkownik podał właściwe dane do logowania
+
+"test-admin" - zawiera aplikację napisaną przy użyciu React.JS oraz react-admin
+Projekt zawiera:
+compononents - folder z komponentami użytymi w tworzeniu widoków
+App.js - główny widok aplikacji, renderuje komponent <Admin> oraz komponenty pochodne <Resource> z listą użytkowników i listą wniosków
+authProvider.js - klasa odpowiadająca za autentykację użytkowników podczas różnych czynności (logowanie, przełączanie między stronami, wylogowanie, zapytania do serwera)
+dataProvider.js - klasa odpowiadająca za komunikację z serwerem
+MyLoginPage.js - widok panelu logowania
+Dashboard.js - widok panelu głównego
+
 
 Baza danych:
-Aby aplikacja poprawnie dzia�a�a nale�y za�o�y� lokalnie baz� danych postgresql.
+Aby aplikacja poprawnie działała należy założyć lokalnie bazę danych postgresql.
 Tabele:
 
 CREATE TABLE public.login (
