@@ -27,6 +27,25 @@ MyLoginPage.js - widok panelu logowania
 Dashboard.js - widok panelu gÅ‚Ã³wnego
 
 
+"back" - zawiera serwer aplikacji napisany przy u¿yciu Node.JS
+Projekt zawiera nastêpuj¹ce endpointy:
+users.handleGetUsers(req,res,db) - zwraca listê u¿ytkowników
+wnioski.handleGetWnioski(req,res,db) - zwraca listê z³o¿onych wniosków
+wnioski.handleShowEditApplication(req,res,db) - zwraca wniosek o zadanym id
+wnioski.handlePostWnioski(req, res, db) - dodaje nowy wniosek do bazy danych na podstawie parametrów w req.body: userId, title, body
+wnioski.handleUpdateApplication(req,res,db) - uaktualnia wniosek o zadanym id
+authentication.handleAuthentication(req,res,db,bcrypt) - sprawdza czy u¿ytkownik poda³ w³aœciwe dane do logowania
+
+"test-admin" - zawiera aplikacjê napisan¹ przy u¿yciu React.JS oraz react-admin
+Projekt zawiera:
+compononents - folder z komponentami u¿ytymi w tworzeniu widoków
+App.js - g³ówny widok aplikacji, renderuje komponent <Admin> oraz komponenty pochodne <Resource> z list¹ u¿ytkowników i list¹ wniosków
+authProvider.js - klasa odpowiadaj¹ca za autentykacjê u¿ytkowników podczas ró¿nych czynnoœci (logowanie, prze³¹czanie miêdzy stronami, wylogowanie, zapytania do serwera)
+dataProvider.js - klasa odpowiadaj¹ca za komunikacjê z serwerem
+MyLoginPage.js - widok panelu logowania
+Dashboard.js - widok panelu g³ównego
+
+
 Baza danych:
 Aby aplikacja poprawnie dziaÅ‚aÅ‚a naleÅ¼y zaÅ‚oÅ¼yÄ‡ lokalnie bazÄ™ danych postgresql.
 Tabele:
