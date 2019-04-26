@@ -1,4 +1,4 @@
-# Elektroniczny System Finansowania Działalności Studenckiej.
+# Elektroniczny System Finansowania  Działalności Studenckiej.
 
 ## Instalacja:
 1. Proszę pobrać repozytorium do lokalnego folderu.
