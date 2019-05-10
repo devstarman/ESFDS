@@ -1,9 +1,12 @@
 const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, transporter) => {
-    const { email, name, password } = req.body;
 
-    if(!email || !name || !password) {
+    const { name, surname, email, mobilenumber, password, orgNameId, orgRoleId, facultyId } = req.body;
+
+    if(!name || !surname || !email || !mobilenumber || !password || !orgNameId || !orgRoleId || !facultyId) {
         return res.status(400).json('incorrect register form submission (empty fields)');
     }
+
+    console.log("Handling registration of " + email);
 
     const hash = bcrypt.hashSync(password);
     const verificationString = cryptoRandomString(20);
@@ -19,10 +22,16 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
                 return trx('users')
                     .returning('email')
                     .insert({
-                        email: loginEmail[0],
                         name: name,
+                        surname: surname,
+                        email: loginEmail[0],
+                        mobilenumber: mobilenumber,
                         joined: new Date(),
-                        isverified: false
+                        isverified: false,
+                        isacceptedbyadmin: true,
+                        organisationid: orgNameId,
+                        organisationroleid: orgRoleId,
+                        facultyid: facultyId
                     })
                     .then(loginEmail => {
                         return trx('verification')
@@ -34,15 +43,14 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
                             })
                             .then(user => {
                                 console.log('User registered.')
-                                //res.json(user[0]);
+                                res.json({msg: "Twoje konto zostało pomyślnie zarejestrowane."});
                             })
                     })
             })
             .then(trx.commit)
             .catch(trx.rollback)
     }).
-    catch( err => res.status(400).json('unable to register'));
-
+    catch( err => res.status(400).json({errorMsg: 'Serwer zwrócił błąd.'}));
 
     mailOptions.html = `Dzień dobry, <br><br>`
         + `Twoja rejestracja w systemie KFDS Politechniki Wrocławskiej przebiegła poprawnie.<br>`

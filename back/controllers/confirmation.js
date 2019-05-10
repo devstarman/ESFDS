@@ -9,7 +9,8 @@ const handleConfirmation = (req,res,db) => {
                     isverified: true
                 }).then(a => console.log('ok'));
             console.log('Verification successful!');
-            res.redirect('http://127.0.0.1:3001/');
+            res.json('Weryfikacja udana.');
+            //res.redirect('http://127.0.0.1:3001/');
             //update database - user verified, link expired
             //route to 3001 (frontend signin)
         } else {
