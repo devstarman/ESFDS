@@ -10,6 +10,7 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
 
     const hash = bcrypt.hashSync(password);
     const verificationString = cryptoRandomString(20);
+    console.log("verificationString: " + verificationString);
     const confirmationLink = `http://127.0.0.1:3000/confirmation/`;
     db.transaction(trx => {
         trx.insert({
@@ -61,6 +62,7 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
     console.log('email = ', email);
     mailOptions.to = email;
 
+    console.log("verificationString2: " + verificationString);
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
             console.log(error);
