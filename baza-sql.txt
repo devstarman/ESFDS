@@ -1,0 +1,209 @@
+-- Drop table
+
+-- DROP TABLE public.doswiadczeniazespolu;
+
+CREATE TABLE public.doswiadczeniazespolu (
+	id serial NOT NULL,
+	idwniosku int4 NOT NULL,
+	imienazwisko varchar(50) NOT NULL,
+	nazwaprojektu varchar(50) NOT NULL,
+	pelnionafunkcja varchar(50) NOT NULL,
+	budzet int4 NOT NULL,
+	datawydarzenia date NOT NULL,
+	CONSTRAINT doswiadczeniazespolu_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.faculties;
+
+CREATE TABLE public.faculties (
+	id serial NOT NULL,
+	name varchar(50) NULL,
+	CONSTRAINT faculties_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.konkursy;
+
+CREATE TABLE public.konkursy (
+	id serial NOT NULL,
+	autorid int4 NOT NULL,
+	komisjaid int4 NOT NULL,
+	typkonkursu int4 NOT NULL,
+	czasrozpoczecia timestamp NOT NULL,
+	czaszakonczenia timestamp NOT NULL,
+	wynikikonkursuid int4 NULL
+);
+
+-- Drop table
+
+-- DROP TABLE public.kosztorysy;
+
+CREATE TABLE public.kosztorysy (
+	id serial NOT NULL,
+	idwniosku int4 NOT NULL,
+	kwotawnioskowana int4 NOT NULL,
+	srodkiinnepwr int4 NOT NULL,
+	umowysponsorskie int4 NOT NULL,
+	wplatyuczestnikow int4 NOT NULL,
+	grantydotacje int4 NOT NULL,
+	kwotazinnychogolem int4 NOT NULL,
+	kwotaogolem int4 NOT NULL,
+	CONSTRAINT kosztorysy_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.login;
+
+CREATE TABLE public.login (
+	id serial NOT NULL,
+	hash varchar(100) NOT NULL,
+	email text NOT NULL,
+	CONSTRAINT login_email_key UNIQUE (email),
+	CONSTRAINT login_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.organisationroles;
+
+CREATE TABLE public.organisationroles (
+	id serial NOT NULL,
+	organisationrole varchar(100) NULL,
+	organisationtypeid int4 NULL,
+	CONSTRAINT organisationroles_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.organisations;
+
+CREATE TABLE public.organisations (
+	id serial NOT NULL,
+	name varchar(100) NULL,
+	organisationtypeid int4 NULL,
+	facultyid int4 NULL,
+	CONSTRAINT organisations_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.organisationtypes;
+
+CREATE TABLE public.organisationtypes (
+	id serial NOT NULL,
+	organisationtype varchar(100) NULL,
+	CONSTRAINT organisationtypes_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.osobyodpowiedzialne;
+
+CREATE TABLE public.osobyodpowiedzialne (
+	id serial NOT NULL,
+	idwniosku int4 NOT NULL,
+	imienazwisko varchar(50) NOT NULL,
+	wydzial varchar(50) NOT NULL,
+	nrindeksu int4 NOT NULL,
+	email varchar(50) NOT NULL,
+	telefon int4 NOT NULL,
+	typ varchar(50) NOT NULL,
+	CONSTRAINT osobyodpowiedzialne_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.pozycjeharmonogramu;
+
+CREATE TABLE public.pozycjeharmonogramu (
+	id serial NOT NULL,
+	idwniosku int4 NOT NULL,
+	pozycja varchar(50) NOT NULL,
+	datarozpoczecia date NOT NULL,
+	datazakonczenia date NOT NULL,
+	CONSTRAINT pozycjeharmonogramu_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.realizatorzyprojektu;
+
+CREATE TABLE public.realizatorzyprojektu (
+	id serial NOT NULL,
+	idwniosku int4 NOT NULL,
+	imienazwisko varchar(50) NOT NULL,
+	funkcja varchar(50) NOT NULL,
+	CONSTRAINT realizatorzyprojektu_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users (
+	id serial NOT NULL,
+	name varchar(100) NULL,
+	surname varchar(100) NULL,
+	email text NOT NULL,
+	mobilenumber int4 NULL,
+	joined timestamp NOT NULL,
+	isverified bool NULL,
+	isacceptedbyadmin bool NULL,
+	organisationid int8 NULL,
+	organisationroleid int8 NULL,
+	facultyid int8 NULL,
+	CONSTRAINT users_email_key UNIQUE (email),
+	CONSTRAINT users_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.verification;
+
+CREATE TABLE public.verification (
+	id serial NOT NULL,
+	verificationstring varchar(20) NULL,
+	email text NULL,
+	verificationdate timestamp NOT NULL,
+	CONSTRAINT verification_pkey PRIMARY KEY (id)
+);
+
+-- Drop table
+
+-- DROP TABLE public.wnioski;
+
+CREATE TABLE public.wnioski (
+	id serial NOT NULL,
+	konkursid int4 NOT NULL,
+	autorid int4 NOT NULL,
+	organizacjaid int4 NOT NULL,
+	typorganizacjiid int4 NOT NULL,
+	komisjaid int4 NOT NULL,
+	nazwaprojektu varchar(200) NOT NULL,
+	kwotawnioskowana numeric(10,2) NOT NULL,
+	kwotazinnychzrodel numeric(10,2) NOT NULL,
+	kwotaogolem numeric(10,2) NOT NULL,
+	opisprojektu text NULL,
+	planowanytermin text NULL,
+	celprojektu text NULL,
+	zasoby text NULL,
+	wykazrealizacji text NULL,
+	wspolpraca text NULL,
+	grupaodbiorcow text NULL,
+	strategiasponsorow text NULL,
+	promocjaprojektu text NULL,
+	aktualnystan text NULL,
+	rezultatbadawczy text NULL,
+	upowszechnienie text NULL,
+	umiejetnosci text NULL,
+	innowacyjnosc text NULL,
+	kosztorysid int4 NOT NULL,
+	datawprowadzenia timestamp NOT NULL,
+	weryfikacjaprezesa bool NULL DEFAULT false,
+	weryfikacjaopiekuna bool NULL,
+	CONSTRAINT wnioski_pkey PRIMARY KEY (id)
+);
