@@ -51,6 +51,7 @@ const wnioski = require('./controllers/wnioski');
 const resources = require('./controllers/resources');
 const organisations = require('./controllers/organisation');
 const faculties = require('./controllers/faculty');
+const organisationrole = require('./controllers/organisationrole');
 
 //MIDDLEWARE
 app.use(cors());
@@ -59,17 +60,21 @@ app.use(bodyParser.json());
 //ROUTES
 app.get('/', (req, res) => res.send('Hello World!'));
 app.get('/users', (req, res) => users.handleGetUsers(req, res, db));
+app.get('/users/:id', (req, res) => users.handleShowEditUser(req,res,db));
+app.put('/users/:id', (req,res) => users.handleUpdateUser(req,res,db));
 app.get('/wnioski', (req, res) => wnioski.handleGetWnioski(req, res, db));
 app.get('/wnioski/:id', (req, res) => wnioski.handleShowEditApplication(req,res,db));
 app.post('/wnioski', (req, res) => wnioski.handlePostWnioski(req, res, db));
 app.put('/wnioski/:id', (req,res) => wnioski.handleUpdateApplication(req,res,db));
 app.post('/authenticate', (req,res) => authentication.handleAuthentication(req,res,db,bcrypt));
 app.post('/resources', (req, res) => resources.returnPermittedResources(req,res,db));
-app.post('/organisationTypes', (req, res) => organisations.getOrganisationTypes(req,res,db));
+app.get('/organisationTypes', (req, res) => organisations.getOrganisationTypes(req,res,db));
 app.post('/organisationNames', (req, res) => organisations.getOrganisationNames(req,res,db));
 app.post('/organisationRoles', (req, res) => organisations.getOrganisationRoles(req,res,db));
-app.post('/faculties', (req, res) => faculties.getFaculties(req,res,db));
+app.get('/faculties', (req, res) => faculties.getFaculties(req,res,db));
 app.get('/organisations', (req, res) => organisations.getManyFromDataProvider(req,res,db));
+app.get('/organisationroles', (req, res) => organisationrole.getManyFromDataProvider(req,res,db));
+app.get('/organisationroles/:id', (req, res) => organisationrole.getOrganisationRolesForUserId(req,res,db));
 
 app.post('/signin', (req, res) => signin.handleSignin(req,res,db,bcrypt));
 app.post('/findface', (req, res) => findface.handleFindface(req,res));
@@ -78,5 +83,8 @@ app.get('/profile/:id', (req,res) => profile.handleProfile(res, res));
 app.get('/confirmation/:verId', (req,res) => confirmation.handleConfirmation(req,res,db));
 app.put('/image', (req, res) => image.handleImage(req,res,db));
 
+// server musial byc wyeksportowany
 //START LOG
-app.listen(3000, () => console.log('Backend App listening on port 3000!'))
+const server = app.listen(3000, () => console.log('Backend App listening on port 3000!'));
+
+module.exports = server;

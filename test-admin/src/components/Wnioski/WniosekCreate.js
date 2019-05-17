@@ -1,7 +1,7 @@
 import React from 'react';
 import { Edit, Create, TabbedForm, FormTab, ArrayInput, SimpleFormIterator, DateInput, SimpleForm, ReferenceInput, NumberInput, TextInput, SelectInput, DisabledInput, LongTextInput } from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
-import IdAuthorField from './IdAuthorField';
+import IdAuthorField from '../CustomFields/IdAuthorField';
 
 export const WniosekCreate = props => (
     <Create {...props}>

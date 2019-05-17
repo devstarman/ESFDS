@@ -4,18 +4,19 @@ import { Admin, Resource, ListGuesser, EditGuesser } from 'react-admin';
 import Dashboard  from './components/MyLoginPage/Dashboard';
 import dataProvider from './providers/dataProvider';
 import authProvider from './providers/authProvider';
-import { MyUserList } from './MyUserList';
-import { MyWnioskiList } from './MyWnioskiList';
-import { WniosekCreate } from "./WniosekCreate";
-import { ApplicationEdit } from './ApplicationEdit';
+import { MyUserList } from './components/Users/MyUserList';
+import  UserEdit  from './components/Users/UserEdit';
+import { MyWnioskiList } from './components/Wnioski/MyWnioskiList';
+import { WniosekCreate } from "./components/Wnioski/WniosekCreate";
 import MyLoginPage from './components/MyLoginPage/MyLoginPage';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://localhost:3000'; //h
 
 const knownResources = [
-    <Resource name="users" list={MyUserList} edit={EditGuesser} />,
+    <Resource name="users" list={MyUserList} edit={UserEdit} />,
     <Resource name="wnioski" list={MyWnioskiList} edit={EditGuesser} create={WniosekCreate} />,
-    <Resource name="organisations" />
+    <Resource name="organisations" />,
+    <Resource name="organisationroles" />
 ];
 
 const fetchResources = permissions =>

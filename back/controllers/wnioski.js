@@ -1,4 +1,5 @@
 const handleGetWnioski = (req,res,db) => {
+    console.log("handleGetWnioski()");
     db.select('*').from('wnioski').then(result => {
         res.setHeader("Content-Range", "users 0-" + result.length + "/" + Math.ceil(result.length/10));
         res.setHeader("Access-Control-Expose-Headers", "Content-Range");
@@ -150,7 +151,7 @@ const handlePostWnioski = async (req,res,db) => {
 const handleShowEditApplication = (req,res,db) => {
     const { id } = req.params;
     let found = false;
-    console.log("Handling ShowEditApplication");
+    console.log("Handling ShowEditApplication.");
     db.select('*').from('wnioski').where({id: id}).then(application => {
         if(application.length) {
             res.json(application[0]);

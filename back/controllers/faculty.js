@@ -3,7 +3,7 @@ const getFaculties = (req, res, db) => {
         .then(data => {
             if(data[0]) {
                 console.log("organisation 1: " + data[0].id);
-                res.json(data);
+                res.status(200).json(data);
             } else {
                 console.log('Faculties list error.');
                 res.status(400).json({msg: 'Faculties list error.'});
