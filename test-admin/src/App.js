@@ -9,6 +9,9 @@ import  UserEdit  from './components/Users/UserEdit';
 import { MyWnioskiList } from './components/Wnioski/MyWnioskiList';
 import { WniosekCreate } from "./components/Wnioski/WniosekCreate";
 import MyLoginPage from './components/MyLoginPage/MyLoginPage';
+import customRoutes from './customRoutes';
+import { Redirect } from 'react-router';
+import { push } from 'react-router-redux';
 
 const API_URL = 'http://localhost:3000'; //h
 
@@ -26,12 +29,20 @@ const fetchResources = permissions =>
         body: JSON.stringify({roleId: permissions}),
     })
         .then(response => response.json())
-        .then(json => knownResources.filter(resource => json.resources.includes(resource.props.name)))
+        .then(json => {
+            console.log("json status: " + json.status);
+            if(json.status !== undefined && json.status === 'guest') {
+                console.log('guest');
+                return ( <MyLoginPage /> );
+            } else {
+                return knownResources.filter(resource => json.resources.includes(resource.props.name));
+            }
+        })
         .catch(err => console.log("error: " + err));
 
 
 const App = () => (
-    <Admin loginPage={MyLoginPage} dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+    <Admin customRoutes={customRoutes} loginPage={MyLoginPage} dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
         {fetchResources}
     </Admin>
 );

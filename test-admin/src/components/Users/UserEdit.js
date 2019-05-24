@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Edit, SimpleForm, TextInput, NumberInput, DateInput, BooleanInput, ReferenceInput, SelectInput, TextField, ReferenceField } from 'react-admin';
 
+let API_URL = 'http://localhost:3000';
+
 class UserEdit extends Component {
 
     constructor(props) {
@@ -22,7 +24,6 @@ class UserEdit extends Component {
     fetchDataFromServer = () => {
         console.log("Fetching data from server.");
         console.log("this.props = " + this.props.id);
-        let API_URL = 'http://localhost:3000';
         const request = new Request(API_URL+'/organisationroles/'+this.props.id, {
             method: 'GET',
             headers: new Headers({ 'Content-Type': 'application/json' }),

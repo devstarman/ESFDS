@@ -43,6 +43,9 @@ export default (type, params) => {
             });
     }
     if(type === AUTH_GET_PERMISSIONS) {
+        console.log("params: " + params);
+        console.log("params: " + type);
+        console.log("params: " + JSON.stringify(params));
         const permissions = localStorage.getItem('roleId');
         console.log("AUTH_GET_PERMISSIONS, returning roleId = " + permissions);
         return permissions ? Promise.resolve(permissions) : Promise.reject();

@@ -52,6 +52,7 @@ const resources = require('./controllers/resources');
 const organisations = require('./controllers/organisation');
 const faculties = require('./controllers/faculty');
 const organisationrole = require('./controllers/organisationrole');
+const resetpassword = require('./controllers/resetpassword');
 
 //MIDDLEWARE
 app.use(cors());
@@ -75,6 +76,7 @@ app.get('/faculties', (req, res) => faculties.getFaculties(req,res,db));
 app.get('/organisations', (req, res) => organisations.getManyFromDataProvider(req,res,db));
 app.get('/organisationroles', (req, res) => organisationrole.getManyFromDataProvider(req,res,db));
 app.get('/organisationroles/:id', (req, res) => organisationrole.getOrganisationRolesForUserId(req,res,db));
+app.post('/resetpassword', (req,res) => resetpassword.handleResetPassword(req, res, db, cryptoRandomString, bcrypt, mailOptions, transporter));
 
 app.post('/signin', (req, res) => signin.handleSignin(req,res,db,bcrypt));
 app.post('/findface', (req, res) => findface.handleFindface(req,res));
