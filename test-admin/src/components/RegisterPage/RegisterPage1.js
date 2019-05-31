@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './RegisterPage.css';
+import Select from 'react-select';
 import 'tachyons';
 
 const errorMsgStyle = {
@@ -16,82 +17,105 @@ const errorMsgStyle2 = {
     paddingBottom: 20,
 };
 
+const API_URL = 'http://localhost:3000';
+let defaultOptions = [{value: 0, label: " "}];
+
 class RegisterPage1 extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            signInEmail: '',
-            errorMsgLogin: '',
+            orgType: 0,
+            errorMsgOrgType: '',
             errorServer: '',
+            orgTypes: [],
+            orgTypesOptions: [],
         }
+    }
+
+    async componentDidMount() {
+        console.log("cDM: this.state.orgType: " + this.state.orgType);
+        const request = new Request(API_URL+'/organisationTypes', {
+            method: 'GET',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        });
+        await fetch(request)
+            .then(response => {
+                console.log("response: " + JSON.stringify(response));
+                return response.json();
+            })
+            .then(async (myJson) => {
+                if(myJson[0] !== undefined) {
+                    this.setState({
+                        orgTypes: myJson
+                    });
+                } else {
+                    console.log('Błąd serwera.');
+                    this.setState({
+                        errorServer: 'Błąd serwera.',
+                    });
+                }
+            })
+            .catch(err => {
+                console.log('Serwer nie odpowiada. ' + err);
+                this.setState({
+                    errorServer: 'Serwer nie odpowiada.',
+                });
+            });
+        for(let i = 0; i < this.state.orgTypes.length; i++) {
+            this.state.orgTypesOptions[i] = {
+                value: this.state.orgTypes[i].id,
+                label: this.state.orgTypes[i].organisationtype };
+        }
+        this.forceUpdate();
     }
 
     componentWillMount() {
         document.addEventListener("keydown", this.onKeyDown);
     }
 
-    validateEmail = (email) => {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    };
-
-    validateInput = (event) => {
-        console.log("Im here");
-        console.log("signInEmail: " + this.state.signInEmail);
-        let okStatus = true;
-        if(!this.state.signInEmail) {
-            console.log("Wrong email");
-            this.setState({errorMsgLogin: 'E-mail nie może być pusty.'});
-            okStatus = false;
-        } else if(!this.state.signInEmail.includes('@')) {
-            this.setState({errorMsgLogin: ''});
-        } else if(!this.validateEmail(this.state.signInEmail)) {
-            console.log("Wrong email format");
-            this.setState({errorMsgLogin: 'E-mail podany w złym formacie.'});
-            okStatus = false;
-        } else {
-            this.setState({errorMsgLogin: ''});
+    async handleChangeOrgType(val) {
+        // updating value
+        await this.setState({orgType: val.value});
+        // checking if clearing error msg is needed
+        if(this.state.errorMsgOrgType !== '' && this.state.orgType !== 0) {
+            console.log('clearing error msg');
+            this.setState({errorMsgOrgType: ''});
         }
-        console.log("returning: " + okStatus);
-        return okStatus;
-    };
-
-    onSubmitReset = (e) => {
-        if(this.validateInput(e)) {
-            // gather data/credentials here
-            let username = this.state.signInEmail; //'203368';
-            const credentials = {
-                username: username
-            };
-            // Dispatch reset password to server
-
-            setTimeout(this.showServerValidationOutput, 500);
-        }
-    };
-
-    showServerValidationOutput = () => {
-        // handling errors and displaying on screen
-        console.log("in showServerValidationOutput function");
-        if(localStorage.getItem('loginError') !== null) {
-            console.log("Login Error Found.");
-            this.setState({msgServer: localStorage.getItem('loginError')});
-        } else {
-            console.log("No login error.")
-            this.setState({msgServer: ''});
-        }
-    };
-
-    onEmailChange = (event) => {
-        this.setState({signInEmail: event.target.value})
-    };
+        console.log("orgType val: " + this.state.orgType);
+    }
 
     onKeyDown = (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
             event.stopPropagation();
-            this.onSubmitReset();
+            this.onSubmitRegister();
         }
+    };
+
+    onSubmitRegister = () => {
+        if(this.validateInput()) {
+            // Send data to next register page
+            console.log("Sending data to next register page.");
+            this.props.updateRegisterState({'orgType': this.state.orgType});
+            this.props.triggerParentChangeRoute('register2');
+            //setTimeout(this.showServerValidationOutput, 500);
+        }
+    };
+
+    validateInput = () => {
+        console.log("Validation");
+        console.log("this.state.orgType: " + this.state.orgType);
+        let okStatus = true;
+        if(!this.state.orgType || this.state.orgType === 0) {
+            console.log("Empty orgType");
+            this.setState({errorMsgOrgType: 'Rodzaj organizacji musi zostać wybrany.'});
+            okStatus = false;
+        } else {
+            this.setState({errorMsgOrgType: ''});
+        }
+        console.log("Returning validation status: " + okStatus);
+        return okStatus;
     };
 
     render() {
@@ -101,28 +125,26 @@ class RegisterPage1 extends Component {
                     <main className="pa4 black-80">
                         <div className="measure center">
                             <fieldset id="sign_up" className="ba b--transparent ph0 mh0 center">
-                                <legend className="f1-l f2-m f2 fw6 ph0 mh0">Rejestracja</legend>
+                                <legend className="f1-l f2-m f2 fw6 ph0 mh0">Rejestracja 1/3</legend>
                                 <div className="mt3">
                                     <a style={errorMsgStyle2}>{this.state.msgServer}</a>
-                                    <label className="db fw6 lh-copy f5" htmlFor="email-address">E-mail</label>
-                                    <input
-                                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                                        type="email"
-                                        name="email-address"
-                                        id="email-address"
-                                        onChange={this.onEmailChange}
+                                    <label className="db fw6 lh-copy f5" htmlFor="email-address">Rodzaj Organizacji</label>
+                                    <Select
+                                        options={this.state.orgTypesOptions[0] !== undefined ? this.state.orgTypesOptions : defaultOptions}
+                                        placeholder="Wybierz..."
+                                        onChange={this.handleChangeOrgType.bind(this)}
                                     />
                                     <div className="mt1">
-                                        <a style={errorMsgStyle}>{this.state.errorMsgLogin}</a>
+                                        <a style={errorMsgStyle}>{this.state.errorMsgOrgType}</a>
                                     </div>
                                 </div>
                                 <div className="center mt3">
                                     <input
                                         onKeyDown={this.onKeyDown}
-                                        onClick={this.onSubmitReset}
+                                        onClick={this.onSubmitRegister}
                                         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f5 dib"
                                         type="submit"
-                                        value="Zresetuj hasło"
+                                        value="Przejdź dalej"
                                     />
                                 </div>
                                 <div className="center pt3">

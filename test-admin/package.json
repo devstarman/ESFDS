@@ -5,13 +5,14 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^2.8.5",
-    "ra-input-rich-text": "^2.8.6",
+    "ra-input-rich-text": "^2.9.2",
     "react": "^16.8.6",
     "react-admin": "^2.8.5",
     "react-dom": "^16.8.6",
     "react-particles-js": "^2.6.0",
     "react-redux": "~5.0.7",
     "react-scripts": "2.1.8",
+    "react-select": "^3.0.3",
     "tachyons": "^4.11.1"
   },
   "scripts": {

@@ -29,7 +29,11 @@ class MyLoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            route: 'login'
+            route: 'login',
+            orgType: '',
+            orgNameId: '',
+            orgRoleId: '',
+            facultyId: ''
         }
     }
 
@@ -38,6 +42,14 @@ class MyLoginPage extends Component {
         this.setState({
             route: route
         });
+    };
+
+    changeRegisterState = async (newState) => {
+        await this.setState(newState);
+    };
+
+    getValueFromState = (key) => {
+        return this.state[key];
     };
 
     render() {
@@ -52,13 +64,27 @@ class MyLoginPage extends Component {
             return (
                 <div>
                     <Particles className='particles' params={particlesOptions}/>
-                    <RegisterPage1 triggerParentChangeRoute={(route) => this.changeRoute(route)} />
+                    <RegisterPage1 triggerParentChangeRoute={(route) => this.changeRoute(route)}
+                                    updateRegisterState ={(name, value) => this.changeRegisterState(name, value)} />
                 </div>
             );
         } else if(this.state.route === 'register2') {
-            return (<div>register2</div>);
+            return (
+                <div>
+                    <Particles className='particles' params={particlesOptions}/>
+                    <RegisterPage2 triggerParentChangeRoute={(route) => this.changeRoute(route)}
+                                   updateRegisterState ={(name, value) => this.changeRegisterState(name, value)}
+                                   getValueFromState ={(key) => this.getValueFromState(key)} />
+                </div>
+            );
         } else if(this.state.route === 'register3') {
-            return (<div>register3</div>);
+            return (
+                <div>
+                    <Particles className='particles' params={particlesOptions}/>
+                    <RegisterPage3 triggerParentChangeRoute={(route) => this.changeRoute(route)}
+                                   getValueFromState ={(key) => this.getValueFromState(key)} />
+                </div>
+            );
         } else if(this.state.route === 'forgotpassword') {
             return (
                 <div>

@@ -31,11 +31,19 @@ const errorMsgStyle2 = {
     paddingBottom: 20,
 };
 
+const registerMsgStyle = {
+    textAlign: 'center',
+    fontSize: 14,
+    color: '#00ff00',
+    paddingBottom: 20,
+};
+
 class LoginPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            registerMsg: '',
             signInEmail: '',
             signInPassword: '',
             errorMsgLogin: '',
@@ -46,6 +54,13 @@ class LoginPage extends Component {
 
     componentWillMount() {
         document.addEventListener("keydown", this.onKeyDown);
+    }
+
+    componentDidMount() {
+        let registerMsg = localStorage.getItem('registerMsg');
+        if(registerMsg !== null && registerMsg !== undefined && registerMsg !== "") {
+            this.setState({registerMsg: registerMsg});
+        }
     }
 
     validateEmail = (email) => {
@@ -83,6 +98,10 @@ class LoginPage extends Component {
     }
 
     onSubmitSignIn = (e) => {
+        if(this.state.registerMsg !== "") {
+            localStorage.setItem('registerMsg', "");
+            this.setState({registerMsg: ""});
+        }
         if(this.validateInput(e)) {
             //e.preventDefault();
             // gather data/credentials here
@@ -136,6 +155,7 @@ class LoginPage extends Component {
                                 <legend className="f1-l f2-m f2 fw6 ph0 mh0">Logowanie</legend>
                                 <div className="mt3">
                                     <a style={errorMsgStyle2}>{this.state.msgServer}</a>
+                                    <a style={registerMsgStyle}>{this.state.registerMsg}</a>
                                     <label className="db fw6 lh-copy f5" htmlFor="email-address">E-mail</label>
                                     <input
                                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
@@ -170,7 +190,7 @@ class LoginPage extends Component {
                                         value="Zaloguj się"
                                     />
                                 </div>
-                                <div className="center pt3">
+                                <div className="center">
                                     <p onClick={() => {this.props.triggerParentChangeRoute('register1')}} className="f5 link dim black pointer ma2">Zarejestruj się</p>
                                 </div>
                                 <div className="center">

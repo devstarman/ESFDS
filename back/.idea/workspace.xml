@@ -2,22 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a643529f-22c7-45bf-9d78-06fa37a54617" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/resetpassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/ForgotPassword/ForgotPassword.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/ForgotPassword/ForgotPassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/MyLoginPage/LoginPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test-admin/src/customRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/konkursy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/resetpassword.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/Konkursy/KonkursCreate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test-admin/src/components/Konkursy/KonkursyList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/organisation.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/organisation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/resources.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/resources.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-admin/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-admin/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-admin/src/components/MyLoginPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/components/MyLoginPage/LoginPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-admin/src/components/MyLoginPage/MyLoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/components/MyLoginPage/MyLoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test-admin/src/components/Users/UserEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/components/Users/UserEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test-admin/src/providers/authProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/providers/authProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage1.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage3.js" beforeDir="false" afterPath="$PROJECT_DIR$/../test-admin/src/components/RegisterPage/RegisterPage3.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,20 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/integration/organisationTypes.test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="592">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
             </state>
           </provider>
         </entry>
@@ -51,31 +42,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/resources.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+            <state relative-caret-position="238">
+              <caret line="14" column="88" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="88" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/authentication.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/confirmation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="9" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/resetpassword.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
@@ -85,10 +58,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/resetpassword.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/wnioski.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state relative-caret-position="136">
+              <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/konkursy.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1258">
+              <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/organisation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+            <state relative-caret-position="1708">
+              <caret line="118" column="4" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -114,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
+            <state relative-caret-position="892">
               <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
             </state>
           </provider>
@@ -165,11 +165,13 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/tests/integration/faculties.test.js" />
         <option value="$PROJECT_DIR$/controllers/faculty.js" />
-        <option value="$PROJECT_DIR$/controllers/organisation.js" />
         <option value="$PROJECT_DIR$/tests/integration/organisationTypes.test.js" />
-        <option value="$PROJECT_DIR$/controllers/resources.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/controllers/resetpassword.js" />
+        <option value="$PROJECT_DIR$/tests/integration/resetpassword.test.js" />
+        <option value="$PROJECT_DIR$/controllers/organisation.js" />
+        <option value="$PROJECT_DIR$/controllers/resources.js" />
+        <option value="$PROJECT_DIR$/controllers/konkursy.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -286,12 +288,15 @@
       <workItem from="1558073186228" duration="601000" />
       <workItem from="1558075473415" duration="508000" />
       <workItem from="1558179288188" duration="43000" />
-      <workItem from="1558619451560" duration="3926000" />
+      <workItem from="1558619451560" duration="5522000" />
+      <workItem from="1558807545604" duration="36000" />
+      <workItem from="1559087357324" duration="853000" />
+      <workItem from="1559247871743" duration="5687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137036000" />
+    <option name="totallyTimeSpent" value="145208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -357,13 +362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/wnioski.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/profile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -385,13 +383,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/integration/faculties.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/faculty.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -399,45 +390,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/organisation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/organisationrole.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/integration/organisationTypes.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
+        <state relative-caret-position="578">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/resources.js">
+    <entry file="file://$PROJECT_DIR$/tests/integration/faculties.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/confirmation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="9" selection-end-column="48" />
+        <state relative-caret-position="221">
+          <caret line="13" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -448,17 +411,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/register.js">
+    <entry file="file://$PROJECT_DIR$/controllers/confirmation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="9" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -466,6 +422,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/resetpassword.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/organisationrole.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/organisation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1708">
+          <caret line="118" column="4" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="892">
+          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/resources.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="88" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/wnioski.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/konkursy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>

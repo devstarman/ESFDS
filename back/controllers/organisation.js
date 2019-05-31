@@ -1,4 +1,5 @@
 const getOrganisationTypes = (req, res, db) => {
+    console.log("getOrganisationTypes()");
     db.select('id', 'organisationtype').from('organisationtypes')
         .then(data => {
             if(data[0]) {

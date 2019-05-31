@@ -8,16 +8,17 @@ import { MyUserList } from './components/Users/MyUserList';
 import  UserEdit  from './components/Users/UserEdit';
 import { MyWnioskiList } from './components/Wnioski/MyWnioskiList';
 import { WniosekCreate } from "./components/Wnioski/WniosekCreate";
+import { KonkursyList } from "./components/Konkursy/KonkursyList";
+import { KonkursCreate } from "./components/Konkursy/KonkursCreate";
 import MyLoginPage from './components/MyLoginPage/MyLoginPage';
 import customRoutes from './customRoutes';
-import { Redirect } from 'react-router';
-import { push } from 'react-router-redux';
 
 const API_URL = 'http://localhost:3000'; //h
 
 const knownResources = [
-    <Resource name="users" list={MyUserList} edit={UserEdit} />,
-    <Resource name="wnioski" list={MyWnioskiList} edit={EditGuesser} create={WniosekCreate} />,
+    <Resource name="users" list={MyUserList} edit={UserEdit} options={{ label: 'Użytkownicy' }} />,
+    <Resource name="wnioski" list={MyWnioskiList} edit={EditGuesser} create={WniosekCreate} options={{ label: 'Wnioski' }} />,
+    <Resource name="konkursy" list={KonkursyList} edit={EditGuesser} create={KonkursCreate} options={{ label: 'Konkursy' }} />,
     <Resource name="organisations" />,
     <Resource name="organisationroles" />
 ];
@@ -35,6 +36,7 @@ const fetchResources = permissions =>
                 console.log('guest');
                 return ( <MyLoginPage /> );
             } else {
+                console.log("USER resources: " + JSON.stringify(json));
                 return knownResources.filter(resource => json.resources.includes(resource.props.name));
             }
         })
