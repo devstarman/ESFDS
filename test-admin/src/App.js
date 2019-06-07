@@ -10,6 +10,7 @@ import { MyWnioskiList } from './components/Wnioski/MyWnioskiList';
 import { WniosekCreate } from "./components/Wnioski/WniosekCreate";
 import { KonkursyList } from "./components/Konkursy/KonkursyList";
 import { KonkursCreate } from "./components/Konkursy/KonkursCreate";
+import { KonkursEdit } from "./components/Konkursy/KonkursEdit";
 import MyLoginPage from './components/MyLoginPage/MyLoginPage';
 import customRoutes from './customRoutes';
 
@@ -18,9 +19,10 @@ const API_URL = 'http://localhost:3000'; //h
 const knownResources = [
     <Resource name="users" list={MyUserList} edit={UserEdit} options={{ label: 'Użytkownicy' }} />,
     <Resource name="wnioski" list={MyWnioskiList} edit={EditGuesser} create={WniosekCreate} options={{ label: 'Wnioski' }} />,
-    <Resource name="konkursy" list={KonkursyList} edit={EditGuesser} create={KonkursCreate} options={{ label: 'Konkursy' }} />,
+    <Resource name="konkursy" list={KonkursyList} edit={KonkursEdit} create={KonkursCreate} options={{ label: 'Konkursy' }} />,
     <Resource name="organisations" />,
-    <Resource name="organisationroles" />
+    <Resource name="organisationroles" />,
+    <Resource name="typykonkursow" />
 ];
 
 const fetchResources = permissions =>

@@ -154,8 +154,8 @@ class LoginPage extends Component {
                             <fieldset id="sign_up" className="ba b--transparent ph0 mh0 center">
                                 <legend className="f1-l f2-m f2 fw6 ph0 mh0">Logowanie</legend>
                                 <div className="mt3">
-                                    <a style={errorMsgStyle2}>{this.state.msgServer}</a>
-                                    <a style={registerMsgStyle}>{this.state.registerMsg}</a>
+                                    <a id="msgServer" style={errorMsgStyle2}>{this.state.msgServer}</a>
+                                    <a id="registerMsg" style={registerMsgStyle}>{this.state.registerMsg}</a>
                                     <label className="db fw6 lh-copy f5" htmlFor="email-address">E-mail</label>
                                     <input
                                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"

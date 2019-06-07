@@ -4,9 +4,12 @@ import RichTextInput from 'ra-input-rich-text';
 import IdAuthorField from '../CustomFields/IdAuthorField';
 
 export const WniosekCreate = props => (
-    <Create {...props}>
+    <Create title="Stwórz wniosek" {...props}>
         <TabbedForm redirect="list">
             <FormTab label="Opis projektu">
+                <ReferenceInput label="Id Konkursu" source="konkursid" reference="konkursy" >
+                    <SelectInput optionText="id" />
+                </ReferenceInput>
                 <TextInput source="nazwaprojektu" label="Nazwa projektu" />
                 <RichTextInput source="opisprojektu"
                                label="Tematyka i opis projektu" />

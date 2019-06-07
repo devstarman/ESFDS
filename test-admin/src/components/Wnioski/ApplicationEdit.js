@@ -6,7 +6,7 @@ const uuid = () => {
 };
 
 export const ApplicationEdit = props => (
-    <Edit {...props}>
+    <Edit title="Edytuj wniosek" {...props}>
         <SimpleForm>
             <NumberField source="id" />
             <ReferenceField source="autorid" reference="users" label="Autor">

@@ -22,6 +22,9 @@ const convertDataProviderRequestToHTTP = (type, resource, params) => {
   switch (type) {
     case GET_LIST: {
       console.log("GET_LIST");
+      let currLocation = localStorage.getItem('currentLocation');
+      console.log("currentLocation: " + currLocation);
+      console.log("params: " + JSON.stringify(params));
       const { page, perPage } = params.pagination;
       const { field, order } = params.sort;
       const query = {
@@ -33,7 +36,8 @@ const convertDataProviderRequestToHTTP = (type, resource, params) => {
       return {
         url: `${API_URL}/${resource}`,
         options: { method: 'GET', headers: new Headers({
-            "orgId": localStorage.getItem('orgId')
+            "orgId": localStorage.getItem('orgId'),
+            "currentLocation": currLocation,
           }) },
       };
       //return { url: `${API_URL}/${resource}?${stringify(query)}` };
@@ -62,6 +66,7 @@ const convertDataProviderRequestToHTTP = (type, resource, params) => {
     }
     case UPDATE:
       console.log("UPDATE");
+      console.log("body: " + JSON.stringify(params.data));
       return {
         url: `${API_URL}/${resource}/${params.id}`,
         options: { method: 'PUT', body: JSON.stringify(params.data) },
@@ -69,6 +74,7 @@ const convertDataProviderRequestToHTTP = (type, resource, params) => {
     case CREATE:
       console.log("CREATE");
       params.data.authorId = localStorage.getItem('userId');
+      console.log("authorId =" + params.data.authorId);
       console.log("CREATE: " + JSON.stringify(params.data));
       return {
         url: `${API_URL}/${resource}`,

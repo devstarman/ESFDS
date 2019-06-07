@@ -46,6 +46,10 @@ export default (type, params) => {
         console.log("params: " + params);
         console.log("params: " + type);
         console.log("params: " + JSON.stringify(params));
+        if(params !== undefined && params.location !== undefined) {
+            console.log("currentLocation: " + params.location);
+            localStorage.setItem('currentLocation', params.location);
+        }
         const permissions = localStorage.getItem('roleId');
         console.log("AUTH_GET_PERMISSIONS, returning roleId = " + permissions);
         return permissions ? Promise.resolve(permissions) : Promise.reject();

@@ -42,7 +42,7 @@ class UserEdit extends Component {
     render() {
         const {...props} = this.props;
         return (
-        <Edit {...props}>
+        <Edit title="Edytuj użytkownika" {...props}>
             <SimpleForm>
                 <TextField source="name" label="Imie" />
                 <TextField source="surname" label="Nazwisko" />

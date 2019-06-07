@@ -3,7 +3,7 @@ import { List, Datagrid, TextField, DateField, NumberField, BooleanField, Refere
 import MoneyField from '../CustomFields/MoneyField';
 
 export const MyWnioskiList = props => (
-    <List {...props}>
+    <List title="Wnioski" bulkActionButtons={false} {...props}>
       <Datagrid rowClick="edit">
         <TextField source="nazwaprojektu" label="Nazwa projektu" />
         <ReferenceField label="Organizacja" source="organizacjaid" reference="organisations" >
