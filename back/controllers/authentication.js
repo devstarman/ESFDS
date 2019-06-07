@@ -19,7 +19,7 @@ const handleAuthentication = (req, res, db, bcrypt) => {
                         const isVerified = user[0].isverified;
                         if(isVerified) {
                             console.log(username + " został zalogowany.");
-                            res.json({roleId: user[0].organisationroleid, userId: user[0].id, orgId: user[0].organisationid});
+                            res.status(200).json({roleId: user[0].organisationroleid, userId: user[0].id, orgId: user[0].organisationid, isverified: user[0].isverified});
                         } else {
                             console.log(username + " nie zalogowany ze względu na brak potwierdzenia adresu e-mail.");
                             res.status(400).json({msg: 'Nie potwierdzono adresu e-mail.'});

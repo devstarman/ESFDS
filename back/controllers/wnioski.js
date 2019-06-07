@@ -185,9 +185,29 @@ const handleUpdateApplication = (req,res,db) => {
     });
 };
 
+const handleDeleteWniosek = (req,res,db) => {
+    const { id } = req.params;
+    console.log("Handling DeleteWniosek");
+    db('wnioski').where({id: id}).del().returning('*')
+        .then((affectedRows) => {
+            if((affectedRows) !== 0) {
+                console.log("Success deleting application.");
+                res.status(200).json(affectedRows[0]);
+            } else {
+                console.log("[DeleteApplication] Something went wrong. No affected rows.");
+                res.status(200).json("[DeleteApplication] Something went wrong. No affected rows.");
+            }
+        })
+        .catch((err) => {
+            console.log("[DeleteApplication] Error deleting application.");
+            res.status(400).json("[DeleteApplication] Error deleting application.");
+        });
+};
+
 module.exports = {
     handleGetWnioski: handleGetWnioski,
     handlePostWnioski: handlePostWnioski,
     handleShowEditApplication: handleShowEditApplication,
-    handleUpdateApplication: handleUpdateApplication
+    handleUpdateApplication: handleUpdateApplication,
+    handleDeleteWniosek: handleDeleteWniosek,
 };

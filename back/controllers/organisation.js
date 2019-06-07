@@ -17,6 +17,7 @@ const getOrganisationTypes = (req, res, db) => {
 };
 
 const getOrganisationNames = (req, res, db) => {
+    console.log("getOrganisationNames()");
     const {orgTypeId} = req.body;
 
     if(!orgTypeId) {
@@ -42,6 +43,7 @@ const getOrganisationNames = (req, res, db) => {
 };
 
 const getOrganisationRoles = (req, res, db) => {
+    console.log("getOrganisationRoles()");
     const {orgTypeId} = req.body;
 
     if(!orgTypeId) {
@@ -67,8 +69,9 @@ const getOrganisationRoles = (req, res, db) => {
 };
 
 const getManyFromDataProvider = (req, res, db) => {
+    console.log("organisations getManyFromDataProvider()");
     const query = req.query;
-
+    let requestLocation = req.headers['currentlocation'];
     if(query.filter !== undefined) {
         console.log("query filter");
         //console.log("getManyFromDataProvider, query: " + query.filter.toString());
@@ -91,6 +94,21 @@ const getManyFromDataProvider = (req, res, db) => {
             .catch(err => {
                 console.log("err: " + err);
             });
+    } else if(requestLocation === "/konkursy") {
+        console.log("aha");
+        console.log("query: " + query.toString());
+        db.select('*').from('organisations').where('organisationtypeid','=',1)
+            .then(organisations => {
+                if(organisations.length) {
+                    console.log("organisations get - length = " + organisations.length);
+                    console.log("header: " + "organisation 0-" + organisations.length + "/" + Math.ceil(organisations.length/10));
+                    res.setHeader("Content-Range", "organisations 0-" + organisations.length + "/" + Math.ceil(organisations.length/10));
+                    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+                    res.json(organisations);
+                } else {
+                    res.status(400).json('Not found!');
+                }
+        }).catch(err => res.status(400).json('Error getting organisations'));
     } else {
         console.log("query: " + query.toString());
         db.select('*').from('organisations').then(organisations => {

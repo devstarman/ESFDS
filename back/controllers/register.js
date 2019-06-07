@@ -1,4 +1,4 @@
-const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, transporter) => {
+const handleRegister = async (req, res, db, bcrypt, cryptoRandomString, mailOptions, transporter) => {
 
     const { name, surname, email, mobilenumber, password, orgNameId, orgRoleId, facultyId } = req.body;
 
@@ -8,6 +8,9 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
 
     console.log("Handling registration of " + email);
 
+    //salt rounds - around 200ms per password
+    let saltRounds = 10;
+    let salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password);
     const verificationString = cryptoRandomString(20);
     console.log("verificationString: " + verificationString);
@@ -51,7 +54,7 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
             .then(trx.commit)
             .catch(trx.rollback)
     }).
-    catch( err => res.status(400).json({errorMsg: 'Serwer zwrócił błąd.'}));
+    catch( err => res.status(400).json({errorMsg: 'Serwer zwrócił błąd.' + err}));
 
     mailOptions.html = `Dzień dobry, <br><br>`
         + `Twoja rejestracja w systemie KFDS Politechniki Wrocławskiej przebiegła poprawnie.<br>`
@@ -63,12 +66,14 @@ const handleRegister = (req, res, db, bcrypt, cryptoRandomString, mailOptions, t
     mailOptions.to = email;
 
     console.log("verificationString2: " + verificationString);
-    transporter.sendMail(mailOptions, function(error, info){
+    await transporter.sendMail(mailOptions, async function(error, info){
         if (error) {
             console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
         }
+        // else {
+        //     //console.log('Email sent.');
+        //     //await console.log('Email sent: ' + info.response);
+        // }
     });
 }
 

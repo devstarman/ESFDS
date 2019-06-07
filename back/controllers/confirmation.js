@@ -9,14 +9,15 @@ const handleConfirmation = (req,res,db) => {
                     isverified: true
                 }).then(a => console.log('ok'));
             console.log('Verification successful!');
-            res.json('Weryfikacja udana.');
+            res.status(200).json('Weryfikacja udana.');
             //res.redirect('http://127.0.0.1:3001/');
             //update database - user verified, link expired
             //route to 3001 (frontend signin)
         } else {
-            res.status(400).json('Verification failed. Wrong verification ID.');
+            console.log("Brak e-maila.");
+            res.status(400).json('Weryfikacja nieudana. Zły link weryfikacji.');
         }
-    }).catch(err => res.status(400).json('Error during verification process.'));
+    }).catch(err => res.status(400).json('Weryfikacja nieudana. Zły link weryfikacji.'));
 }
 
 module.exports = {

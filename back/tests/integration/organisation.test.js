@@ -1,3 +1,8 @@
+// app.get('/organisationTypes', (req, res) => organisations.getOrganisationTypes(req,res,db));
+// app.post('/organisationNames', (req, res) => organisations.getOrganisationNames(req,res,db));
+// app.post('/organisationRoles', (req, res) => organisations.getOrganisationRoles(req,res,db));
+// app.get('/organisations', (req, res) => organisations.getManyFromDataProvider(req,res,db));
+
 
 // ladujemy dev dependecy super test
 const request = require('supertest');

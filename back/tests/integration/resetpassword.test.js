@@ -1,3 +1,5 @@
+//app.post('/resetpassword', (req,res) => resetpassword.handleResetPassword(req, res, db, cryptoRandomString, bcrypt, mailOptions, transporter));
+
 const request = require('supertest');
 // ladujemy path do servera
 let server;
@@ -18,7 +20,10 @@ describe('Testy "ResetPassword"',()=>{
             expect(res.status).toBe(400);
         });
         it(`powinno zwrocic kod 200`, async()=>{
-            const res = await request(server).post('/resetpassword');
+            const res = await request(server).post('/resetpassword')
+                .send({
+                    username: '111111@student.pwr.edu.pl'
+                });
             expect(res.status).toBe(200);
         });
     });

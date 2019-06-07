@@ -40,12 +40,8 @@ var mailOptions = {
 
 //CONTROLLERS
 const register = require('./controllers/register');
-const profile = require('./controllers/profile');
-const signin = require('./controllers/signin');
-const authentication = require('./controllers/authentication')
-const findface = require('./controllers/findface');
+const authentication = require('./controllers/authentication');
 const confirmation = require('./controllers/confirmation');
-const image = require('./controllers/image');
 const users = require('./controllers/users');
 const wnioski = require('./controllers/wnioski');
 const resources = require('./controllers/resources');
@@ -61,13 +57,15 @@ app.use(bodyParser.json());
 
 //ROUTES
 app.get('/', (req, res) => res.send('Hello World!'));
-app.get('/users', (req, res) => users.handleGetUsers(req, res, db));
+app.get('/users', (req, res) => users.getManyFromDataProvider(req, res, db));
 app.get('/users/:id', (req, res) => users.handleShowEditUser(req,res,db));
 app.put('/users/:id', (req,res) => users.handleUpdateUser(req,res,db));
+app.delete('/users/:id', (req, res) => users.handleDeleteUser(req,res,db));
 app.get('/wnioski', (req, res) => wnioski.handleGetWnioski(req, res, db));
 app.get('/wnioski/:id', (req, res) => wnioski.handleShowEditApplication(req,res,db));
 app.post('/wnioski', (req, res) => wnioski.handlePostWnioski(req, res, db));
 app.put('/wnioski/:id', (req,res) => wnioski.handleUpdateApplication(req,res,db));
+app.delete('/wnioski/:id', (req, res) => wnioski.handleDeleteWniosek(req,res,db));
 app.post('/authenticate', (req,res) => authentication.handleAuthentication(req,res,db,bcrypt));
 app.post('/resources', (req, res) => resources.returnPermittedResources(req,res,db));
 app.get('/organisationTypes', (req, res) => organisations.getOrganisationTypes(req,res,db));
@@ -82,13 +80,12 @@ app.get('/konkursy', (req, res) => konkursy.handleGetKonkursy(req, res, db));
 app.get('/konkursy/:id', (req, res) => konkursy.handleShowEditKonkurs(req,res,db));
 app.put('/konkursy/:id', (req,res) => konkursy.handleUpdateKonkurs(req,res,db));
 app.post('/konkursy', (req, res) => konkursy.handlePostKonkurs(req, res, db));
+app.post('/konkursy/:id', (req, res) => konkursy.handlePostKonkursWithId(req, res, db));
+app.delete('/konkursy/:id', (req, res) => konkursy.handleDeleteKonkurs(req,res,db));
+app.get('/typykonkursow', (req, res) => konkursy.getManyKonkursyTypesFromDataProvider(req, res, db));
 
-app.post('/signin', (req, res) => signin.handleSignin(req,res,db,bcrypt));
-app.post('/findface', (req, res) => findface.handleFindface(req,res));
-app.post('/register', (req, res) => register.handleRegister(req, res, db, bcrypt, cryptoRandomString, mailOptions, transporter))
-app.get('/profile/:id', (req,res) => profile.handleProfile(res, res));
+app.post('/register', (req, res) => register.handleRegister(req, res, db, bcrypt, cryptoRandomString, mailOptions, transporter));
 app.get('/confirmation/:verId', (req,res) => confirmation.handleConfirmation(req,res,db));
-app.put('/image', (req, res) => image.handleImage(req,res,db));
 
 // server musial byc wyeksportowany
 //START LOG

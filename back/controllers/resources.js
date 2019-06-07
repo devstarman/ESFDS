@@ -11,8 +11,8 @@ const returnPermittedResources = (req, res, db) => {
 
     console.log("Permited resources for user with " + roleId + " roleId are: ");
     if(roleId === '4') {
-        console.log('users, wnioski, organisations, organisationroles, konkursy');
-        res.json({resources: 'users, wnioski, organisations, organisationroles, konkursy'});
+        console.log('users, wnioski, organisations, organisationroles, konkursy, typykonkursow');
+        res.json({resources: 'users, wnioski, organisations, organisationroles, konkursy, typykonkursow'});
     } else if(roleId > 0 && roleId < 6) {
         console.log('users, wnioski, organisations, organisationroles');
         res.json({resources: 'users, wnioski, organisations, organisationroles'});
