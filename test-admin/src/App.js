@@ -13,6 +13,7 @@ import { KonkursCreate } from "./components/Konkursy/KonkursCreate";
 import { KonkursEdit } from "./components/Konkursy/KonkursEdit";
 import MyLoginPage from './components/MyLoginPage/MyLoginPage';
 import customRoutes from './customRoutes';
+import MyLayout from './MyLayout';
 
 const API_URL = 'http://localhost:3000'; //h
 
@@ -22,7 +23,9 @@ const knownResources = [
     <Resource name="konkursy" list={KonkursyList} edit={KonkursEdit} create={KonkursCreate} options={{ label: 'Konkursy' }} />,
     <Resource name="organisations" />,
     <Resource name="organisationroles" />,
-    <Resource name="typykonkursow" />
+    <Resource name="typykonkursow" />,
+    <Resource name="profile" />,
+    <Resource name="statistics" />
 ];
 
 const fetchResources = permissions =>
@@ -46,7 +49,7 @@ const fetchResources = permissions =>
 
 
 const App = () => (
-    <Admin customRoutes={customRoutes} loginPage={MyLoginPage} dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+    <Admin appLayout={MyLayout} customRoutes={customRoutes} loginPage={MyLoginPage} dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
         {fetchResources}
     </Admin>
 );

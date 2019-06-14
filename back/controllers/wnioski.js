@@ -1,10 +1,34 @@
 const handleGetWnioski = (req,res,db) => {
     console.log("handleGetWnioski()");
-    db.select('*').from('wnioski').then(result => {
-        res.setHeader("Content-Range", "users 0-" + result.length + "/" + Math.ceil(result.length/10));
-        res.setHeader("Access-Control-Expose-Headers", "Content-Range");
-        res.json(result);
-    }).catch(err => res.status(400).json('Error getting wnioski'));
+    const query = req.query;
+    console.log("query: " + JSON.stringify(query));
+    if(query.filter !== undefined) {
+        let filter = convertCrappyJson(query.filter);
+        if(filter.nazwaprojektu !== undefined) {
+            let dataFilter = filter.nazwaprojektu;
+            db.select('*').from('wnioski').where('nazwaprojektu', 'like', dataFilter+'%')
+                .then(result => {
+                res.setHeader("Content-Range", "users 0-" + result.length + "/" + Math.ceil(result.length/10));
+                res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+                res.json(result);
+            }).catch(err => res.status(400).json('Error getting wnioski'));
+        } else if(filter.konkursid !== undefined) {
+            let dataFilter = filter.konkursid;
+            console.log("konkursid filter")
+            db.select('*').from('wnioski').where('konkursid', '=', dataFilter)
+                .then(result => {
+                    res.setHeader("Content-Range", "users 0-" + result.length + "/" + Math.ceil(result.length/10));
+                    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+                    res.json(result);
+                }).catch(err => res.status(400).json('Error getting wnioski'));
+        }
+    } else {
+        db.select('*').from('wnioski').then(result => {
+            res.setHeader("Content-Range", "users 0-" + result.length + "/" + Math.ceil(result.length/10));
+            res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+            res.json(result);
+        }).catch(err => res.status(400).json('Error getting wnioski'));
+    }
 };
 
 const handlePostWnioski = async (req,res,db) => {
@@ -203,6 +227,12 @@ const handleDeleteWniosek = (req,res,db) => {
             res.status(400).json("[DeleteApplication] Error deleting application.");
         });
 };
+
+function convertCrappyJson(crappyJson) {
+    let Hjson = require('hjson');
+    console.log("Converting crappy json: " + crappyJson);
+    return Hjson.parse(crappyJson);
+}
 
 module.exports = {
     handleGetWnioski: handleGetWnioski,

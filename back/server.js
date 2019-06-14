@@ -50,6 +50,7 @@ const faculties = require('./controllers/faculty');
 const organisationrole = require('./controllers/organisationrole');
 const resetpassword = require('./controllers/resetpassword');
 const konkursy = require('./controllers/konkursy');
+const profile = require('./controllers/profile');
 
 //MIDDLEWARE
 app.use(cors());
@@ -83,6 +84,8 @@ app.post('/konkursy', (req, res) => konkursy.handlePostKonkurs(req, res, db));
 app.post('/konkursy/:id', (req, res) => konkursy.handlePostKonkursWithId(req, res, db));
 app.delete('/konkursy/:id', (req, res) => konkursy.handleDeleteKonkurs(req,res,db));
 app.get('/typykonkursow', (req, res) => konkursy.getManyKonkursyTypesFromDataProvider(req, res, db));
+app.get('/profile/:id', (req, res) => profile.handleGetProfile(req,res,db));
+app.put('/profile/:id', (req,res) => profile.handleUpdateProfile(req,res,db,bcrypt));
 
 app.post('/register', (req, res) => register.handleRegister(req, res, db, bcrypt, cryptoRandomString, mailOptions, transporter));
 app.get('/confirmation/:verId', (req,res) => confirmation.handleConfirmation(req,res,db));

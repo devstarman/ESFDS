@@ -32,9 +32,16 @@ const convertDataProviderRequestToHTTP = (type, resource, params) => {
         range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
         filter: JSON.stringify(params.filter),
       };
+      let returnedURL = null;
       console.log("URL = " + `${API_URL}/${resource}`);
+      if(params.filter.nazwaprojektu !== undefined || params.filter.konkursid !== undefined) {
+        let filterQuery = {filter: JSON.stringify(params.filter)};
+        returnedURL = `${API_URL}/${resource}?${stringify(filterQuery)}`;
+      } else {
+        returnedURL = `${API_URL}/${resource}`;
+      }
       return {
-        url: `${API_URL}/${resource}`,
+        url: returnedURL,
         options: { method: 'GET', headers: new Headers({
             "orgId": localStorage.getItem('orgId'),
             "currentLocation": currLocation,
@@ -44,6 +51,7 @@ const convertDataProviderRequestToHTTP = (type, resource, params) => {
     }
     case GET_ONE:
       console.log("GET_ONE");
+      console.log("URL: " + `${API_URL}/${resource}/${params.id}`);
       return { url: `${API_URL}/${resource}/${params.id}` };
     case GET_MANY: {
       console.log("GET_MANY");
@@ -107,7 +115,7 @@ const convertHTTPResponseToDataProvider = (response, type, resource, params) => 
       let newjson = [];
       let json2;
       let i2 = 0;
-      if(json[0].nazwaprojektu !== undefined) {
+      if(json[0] !== undefined && json[0].nazwaprojektu !== undefined) {
         console.log('GET LIST: ' + json[0].nazwaprojektu);
         for(let i = 0; i < json.length; i++) {
           console.log(json[i].organizacjaid);

@@ -1,12 +1,13 @@
 import React from 'react';
 import { List, Datagrid, TextField, EmailField, NumberField, DateField, BooleanField, ReferenceField, EditButton, SingleFieldList, ChipField } from 'react-admin';
+import WnioskiButton from './WnioskiButton';
 
 const FullNameField = ({ record = {} }) => <span>{record.name} {record.surname}</span>;
 FullNameField.defaultProps = { label: 'Autor' };
 
 export const KonkursyList = props => (
     <List title="Konkursy" bulkActionButtons={false} {...props}>
-        <Datagrid rowClick="edit">
+        <Datagrid>
             <TextField label="Id" source="id" />
             <ReferenceField label="Komisja" source="komisjaid" reference="organisations" linkType={false} >
                 <TextField source="name" />
@@ -22,6 +23,7 @@ export const KonkursyList = props => (
                 <FullNameField source="surname" />
             </ReferenceField>
             <EditButton />
+            <WnioskiButton />
         </Datagrid>
     </List>
 );

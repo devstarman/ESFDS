@@ -11,11 +11,11 @@ const returnPermittedResources = (req, res, db) => {
 
     console.log("Permited resources for user with " + roleId + " roleId are: ");
     if(roleId === '4') {
-        console.log('users, wnioski, organisations, organisationroles, konkursy, typykonkursow');
-        res.json({resources: 'users, wnioski, organisations, organisationroles, konkursy, typykonkursow'});
+        console.log('users, wnioski, organisations, organisationroles, konkursy, typykonkursow, profile');
+        res.json({resources: 'users, wnioski, organisations, organisationroles, konkursy, typykonkursow, profile'});
     } else if(roleId > 0 && roleId < 6) {
-        console.log('users, wnioski, organisations, organisationroles');
-        res.json({resources: 'users, wnioski, organisations, organisationroles'});
+        console.log('users, wnioski, organisations, organisationroles, profile');
+        res.json({resources: 'users, wnioski, organisations, organisationroles, profile'});
     } else {
         console.log('no resources available');
         res.json({resources: '', status: 'guest'});
