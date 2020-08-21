@@ -1,4 +1,32 @@
-# Elektroniczny System Finansowania  Działalności Studenckiej.
+# Electronic System for Financing Student Activity (ESFDS - pol. Elektroniczny System Finansowania  Działalności Studenckiej)
+
+## Instalation
+1. Install npm modules by "npm install"
+2. Install postgresql on local machine.
+3. Initiate postgresql database with SQL presented in "baza-sql.txt" file.
+4. Update "db" variable in back/server.js.
+5. Run backend in /back folder with "npm start" command.
+6. Run frontend in /test-admin with "npm start" command.
+
+## Project structure
+/back - contains backend server written with Node.js, Express and Knex (for accessing postgresql database).
+/back/controllers - all API endpoints written to match providers from frontend (check more about providers in react-admin documentation).
+/back/tests - integration tests written for all API endpoints with "supertest" module.
+/back/server.js - main routes and database config.
+/test-admin - contains frontend application written in React, based on react-admin framework.
+/test-admin/src/App.js - main configuration for all routes.
+/test-admin/src/providers - API integration (check more about providers in react-admin documentation).
+/test-admin/src/components - all used components grouped in subfolders based on page affiliation
+/selenium - basic selenium smoke tests
+
+## Useful docs
+1. https://reactjs.org/tutorial/tutorial.html
+2. https://marmelab.com/react-admin/Tutorial.html
+3. https://marmelab.com/react-admin/index.html
+4. https://www.npmjs.com/package/supertest
+
+
+## Archival README file in polish below:
 
 ## Instalacja:
 1. Proszę pobrać repozytorium do lokalnego folderu.
